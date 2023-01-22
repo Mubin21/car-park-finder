@@ -5,9 +5,9 @@
             <q-toolbar>
                 <q-toolbar-title>
                     <q-avatar>
-                        <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+                        <img src="https://static.vecteezy.com/system/resources/previews/013/570/457/non_2x/car-parking-road-signs-illustrator-eps-10-free-vector.jpg">
                     </q-avatar>
-                    ParkFinder
+                    <q-btn flat no-caps padding="xs" size="20px" to="/">ParkFinder</q-btn>
                 </q-toolbar-title>
             </q-toolbar>
         </q-header>

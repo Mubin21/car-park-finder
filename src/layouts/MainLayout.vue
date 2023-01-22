@@ -5,15 +5,12 @@
       <q-toolbar>
         <q-toolbar-title>
           <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+            <img src="https://static.vecteezy.com/system/resources/previews/013/570/457/non_2x/car-parking-road-signs-illustrator-eps-10-free-vector.jpg">
           </q-avatar>
           ParkFinder
         </q-toolbar-title>
-        <q-btn>
+        <q-btn color="primary" to="/auth/login">
           Login
-        </q-btn>
-        <q-btn>
-          Signup
         </q-btn>
       </q-toolbar>
     </q-header>

@@ -12,6 +12,7 @@ const routes = [
     component: () => import('layouts/BlankLayout.vue'),
     children: [
       { path: 'register', component: () => import('pages/Register.vue') },
+      { path: 'confirmPassword', component: () => import('pages/Register2.vue') },
       { path: 'login', component: () => import('pages/Login.vue') }
 
     ]
