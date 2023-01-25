@@ -1,7 +1,20 @@
 <template>
     <q-page>
-        <div id="map" style="width:100%; height:500px;">MAP
-        </div>
+        <q-card flat>
+            <div id="map" style="width:100%; height:450px;">MAP
+            </div>
+            <q-card-section horizontal>
+                <q-img class="col-3 q-ma-sm" src="~assets/viber_image_2022-12-02_07-48-26-120.jpg" />
+                <q-card-section>
+                    <div class="text-h6">Car Parking Finder</div>
+                    <div class="text-subtitle2">Available Space: 3</div>
+                </q-card-section>
+            </q-card-section>
+            <q-separator/>
+            <q-card-actions align="center">
+                <q-btn outline rounded label="Reserve" color="primary" /> 
+            </q-card-actions>
+        </q-card>
     </q-page>
 </template>
 
@@ -33,7 +46,7 @@ export default defineComponent({
             //GET LOCATION
             function getCurrentLocation(e) {
 
-                alert("Latitude: " + e.latlng.lat + " Longitude: " + e.latlng.lng)
+                console.log("Latitude: " + e.latlng.lat + " Longitude: " + e.latlng.lng)
                 var radius = e.accuracy / 3
 
                 L.marker(e.latlng).addTo(map).bindPopup('You are within this radius').openPopup()

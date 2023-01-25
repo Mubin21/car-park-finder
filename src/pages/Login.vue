@@ -5,7 +5,7 @@
                 <h5 class="text-center">LOGIN ACCOUNT</h5>
                 <q-card-section>
                     <q-form class="q-gutter-md">
-                        <q-input square filled clearable v-model="email" type="Email" label="Email"
+                        <q-input square filled v-model="email" type="Email" label="Email"
                             placeholder="email@example.com" class="q-mb-md" />
                         <q-input square filled clearable v-model="password" label="Password" type="password"
                             class="q-mb-sm" />
