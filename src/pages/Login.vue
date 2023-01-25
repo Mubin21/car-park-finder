@@ -17,7 +17,11 @@
                         color="white"></q-btn>
                 </q-card-actions>
                 <q-card-section class="text-center">
-                    <p>Not Registered? Create an Account</p>
+                    <p>Not Registered?
+                        <q-btn no-caps flat size="small" to="/auth/register">
+                            Create an Account
+                        </q-btn>
+                    </p>
                 </q-card-section>
             </q-card>
         </div>
@@ -45,13 +49,13 @@ export default defineComponent({
             signInWithEmailAndPassword(auth, this.email, this.password)
                 .then((userCredential) => {
                     // Signed in 
-                    this.$q.notify({message: 'Signed In'})
+                    this.$q.notify({ message: 'Signed In' })
                     this.$router.push('/map')
                     const user = userCredential.user;
                     // ...
                 })
                 .catch((error) => {
-                    this.$q.notify({type:'negative', message:'Invalid email or password.'})
+                    this.$q.notify({ type: 'negative', message: 'Invalid email or password.', position: 'top' })
                     const errorCode = error.code;
                     const errorMessage = error.message;
                 });

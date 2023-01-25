@@ -5,8 +5,17 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
-      { path: 'map', component: () => import('pages/UserDashboard.vue') },
+      { path: 'map', component: () => import('src/pages/Map.vue') },
+      { path: 'map2', component: () => import('pages/UserDashboardMobile.vue') },
 
+    ]
+  },
+  {
+    path: '/admin',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: 'maps', component: () => import('src/pages/Admin.vue') },
+      { path: 'dashboard', component: () => import('pages/Admin.vue') },
     ]
   },
   {

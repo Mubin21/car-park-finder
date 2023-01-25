@@ -15,7 +15,7 @@
               :rules="[val => val && val.length > 0 || 'Please type something']" />
             <q-input square filled v-model="platenumber" label="Plate Number" class="q-mb-md"
               :rules="[val => val && val.length > 0 || 'Please type something']" />
-            <q-input square filled clearable v-model="email" type="email" label="Email" placeholder="email@example.com"
+            <q-input square filled v-model="email" type="email" label="Email" placeholder="email@example.com"
               class="q-mb-md" :rules="[val => val && val.length > 0 || 'Please type something']" />
             <q-input square filled clearable v-model="password" label="Password" type="password" class="q-mb-sm"
               :rules="[val => val && val.length > 0 || 'Please type something']" />

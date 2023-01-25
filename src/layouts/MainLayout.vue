@@ -16,11 +16,6 @@
     </q-header>
 
     <q-page-container>
-      <nav>
-        <router-link to="/">Home</router-link>
-        <router-link to="/auth/register">register</router-link>
-        <router-link to="/auth/login">Login</router-link>
-      </nav>
       <router-view />
     </q-page-container>
 

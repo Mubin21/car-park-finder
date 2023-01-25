@@ -1,40 +1,45 @@
 <template>
     <q-page>
-        <q-card flat>
-            <div id="map" style="width:100%; height:450px;">MAP
+        <div class>
+            <div class="q-gutter-y-md">
+                <q-tabs v-model="currentTab" dense align="justify" class="bg-primary text-white shadow-2"
+                    :breakpoint="0">
+                    <q-route-tab name="dashboard" label="Dashboard" to="/admin/dashboard" />
+                    <q-route-tab name="map" label="Map" to="/admin/maps" />
+                </q-tabs>
+
+                <q-tab-panels v-model="currentTab">
+                    <q-tab-panel name="dashboard">
+                        dashboard
+                    </q-tab-panel>
+                    <q-tab-panel name="map">
+                        <div id="maps" style="width:100%; height:450px;"></div>
+                    </q-tab-panel>
+                </q-tab-panels>
             </div>
-            <q-card-section horizontal>
-                <q-img class="col-3 q-ma-sm" src="~assets/viber_image_2022-12-02_07-48-26-120.jpg" />
-                <q-card-section>
-                    <div class="text-h6">Car Parking Finder</div>
-                    <div class="text-subtitle2">Available Space: 3</div>
-                </q-card-section>
-            </q-card-section>
-            <q-separator/>
-            <q-card-actions align="center">
-                <q-btn outline rounded label="Reserve" color="primary" /> 
-            </q-card-actions>
-        </q-card>
+        </div>
     </q-page>
 </template>
 
 <script>
 
-import { defineComponent, onMounted } from 'vue';
+import { defineComponent, ref, onMounted } from 'vue';
 
 import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+
 import "leaflet/dist/images/marker-icon-2x.png";
 import "leaflet/dist/images/marker-shadow.png";
 
-import L from 'leaflet';
-
 export default defineComponent({
-    name: 'UserDashboard',
+    name: 'Admin',
     setup() {
+
+        //const currentTab = ref('dashboard')
 
         function locationYou() {
 
-            var map = L.map('map').setView([51.505, -0.09], 13);
+            var map = L.map('maps').setView([51.505, -0.09], 13);
 
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
@@ -43,10 +48,11 @@ export default defineComponent({
 
             map.locate({ setView: true, maxZoom: 40, watch: true, timeout: 6000 })
 
-            //GET LOCATION
-            function getCurrentLocation(e) {
+            //get current location
+            function onlocationfound(e) {
 
                 console.log("Latitude: " + e.latlng.lat + " Longitude: " + e.latlng.lng)
+                
                 var radius = e.accuracy / 3
 
                 L.marker(e.latlng).addTo(map).bindPopup('You are within this radius').openPopup()
@@ -58,7 +64,13 @@ export default defineComponent({
                 }).addTo(map)
             }
 
-            map.on('locationfound', getCurrentLocation)
+            function onLocationError(e) {
+                alert(e.message);
+            }
+
+
+            map.on('locationfound', onlocationfound)
+            map.on('locationerror', onLocationError)
         }
 
 
@@ -66,16 +78,18 @@ export default defineComponent({
             locationYou()
         })
 
-
-
-        // var marker = L.marker([51.5, -0.09]).addTo(map);
     },
     data() {
         return {
+            currentTab: '',
+        }
+    },
+    methods() {
 
-        };
     },
     created() {
+        
+        //Marker icon
         L.Marker.prototype.options.icon = L.icon({
             iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
             iconUrl: require("leaflet/dist/images/marker-icon.png"),
@@ -87,6 +101,7 @@ export default defineComponent({
             shadowSize: [41, 41],
         });
     },
+
 
 })
 
