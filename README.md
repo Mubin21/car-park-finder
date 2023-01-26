@@ -9,6 +9,11 @@ yarn
 npm install
 ```
 
+###Install leaflet js
+```bash
+npm install leaflet
+```
+
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 ```bash
 quasar dev
