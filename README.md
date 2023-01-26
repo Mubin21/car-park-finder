@@ -9,7 +9,7 @@ yarn
 npm install
 ```
 
-###Install leaflet js
+### Install leaflet js
 ```bash
 npm install leaflet
 ```
